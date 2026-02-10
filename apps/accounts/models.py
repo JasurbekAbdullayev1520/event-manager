@@ -3,12 +3,12 @@ from django.contrib.auth.models import AbstractUser
 
 
 class User(AbstractUser):
-    phone = models.CharField(max_length=15, unique=True)
+    phone = models.CharField(max_length=13, unique=True)
     bio = models.TextField(blank=True, null=True)
     telegram_id = models.CharField(blank=True, null=True)
     chat_id = models.CharField(blank=True, null=True)
     telegram_username = models.CharField(blank=True, null=True)
-    image = models.ImageField(upload_to='accounts/%Y/%m/%d/')
+    image = models.ImageField(upload_to='accounts/%Y/%m/%d/', null=True, blank=True)
 
     @property
     def full_name(self) -> str:
